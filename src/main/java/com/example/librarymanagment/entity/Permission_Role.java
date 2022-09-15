@@ -5,7 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,22 +17,24 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Table(name = "permission_role")
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Permission_Role {
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JsonBackReference
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
     @JoinColumn(name = "permission_id",nullable = true)
+    @JsonIgnore
     private Permissions permissions;
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JsonBackReference
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
     @JoinColumn(name = "role_id",nullable = true)
+    @JsonIgnore
     private Roles roles;
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public Permission_Role(Permissions permissions, Roles roles) {
@@ -41,4 +43,7 @@ public class Permission_Role {
     }
 
 
+    public Permission_Role() {
+
+    }
 }

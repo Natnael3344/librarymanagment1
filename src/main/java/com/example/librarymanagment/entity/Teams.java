@@ -6,7 +6,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,13 +15,14 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Table(name = "teams")
 public class Teams {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "created_at",updatable = false)
     @CreationTimestamp
@@ -37,14 +38,16 @@ public class Teams {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "teams")
+
+    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
     private Set<Users> users;
-    @JsonManagedReference
-    @OneToMany(mappedBy = "teams")
+
+
+    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
     private Set<Assets> assets;
-    @JsonManagedReference
-    @OneToMany(mappedBy = "teams")
+
+
+    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
     private Set<Transactions> transactions;
     public Teams(Long id, LocalDateTime created_at, LocalDateTime updated_at, String name,LocalDateTime deleted_at) {
         this.id = id;
@@ -52,5 +55,9 @@ public class Teams {
         this.updated_at = updated_at;
         this.name = name;
         this.deleted_at=deleted_at;
+    }
+
+    public Teams() {
+
     }
 }

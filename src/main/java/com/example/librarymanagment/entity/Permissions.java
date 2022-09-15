@@ -5,7 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,14 +14,15 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Table(name = "permissions")
 
 public class Permissions {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "created_at",updatable = false)
     @CreationTimestamp
@@ -36,8 +37,8 @@ public class Permissions {
     private LocalDateTime deleted_at;
     @Column(name = "title")
     private String title;
-    @JsonManagedReference
-    @OneToMany(mappedBy = "permissions")
+
+    @OneToMany(mappedBy = "permissions",fetch = FetchType.LAZY)
     private Set<Permission_Role> permission_role;
 
 
@@ -51,4 +52,7 @@ public class Permissions {
     }
 
 
+    public Permissions() {
+
+    }
 }

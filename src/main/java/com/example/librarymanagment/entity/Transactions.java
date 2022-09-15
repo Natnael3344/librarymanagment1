@@ -1,12 +1,15 @@
 package com.example.librarymanagment.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,10 +20,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "transactions")
-public class Transactions {
+public class Transactions implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,42 +40,44 @@ public class Transactions {
     private LocalDateTime deleted_at;
 
     @Column(name = "isReturned")
-    private int isReturned;
+    private String isReturned;
 
     @Column(name = "returnDate")
-    private LocalDateTime returnDate;
+    private String returnDate;
 
     @Column(name = "returnedOn")
-    private LocalDateTime returnedOn;
+    private String returnedOn;
 
     @Column(name = "issueDate")
-    private LocalDateTime issueDate;
+    private String issueDate;
 
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JsonBackReference
+
+
     @ManyToOne
-    @JoinColumn(name = "asset_id")
+    @JoinColumn(name = "assets_id")
     private Assets assets;
 
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "team_id")
+    public Assets getAssets() {
+        return this.assets;
+    }
+
+    public void setAssets(Assets assets) {
+        this.assets = assets;
+    }
+
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+    @JoinColumn(name = "team_id",referencedColumnName = "id")
+    @JsonIgnore
     private Teams teams;
 
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+    @JoinColumn(name = "member_id",referencedColumnName = "id")
+    @JsonIgnore
     private Users users;
 
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Users users1;
-
-    public Transactions(Long id, LocalDateTime created_at, LocalDateTime updated_at, int isReturned, LocalDateTime returnDate, LocalDateTime returnedOn, LocalDateTime issueDate, Assets assets, Teams teams, Users users, Users users1) {
+    public Transactions(Assets assets,Long id, LocalDateTime created_at, LocalDateTime updated_at, String isReturned, String returnDate, String returnedOn, String issueDate, Teams teams, Users users) {
         this.id = id;
         this.created_at = created_at;
         this.updated_at = updated_at;
@@ -81,9 +85,12 @@ public class Transactions {
         this.returnDate = returnDate;
         this.returnedOn = returnedOn;
         this.issueDate = issueDate;
-        this.assets = assets;
         this.teams = teams;
         this.users = users;
-        this.users1 = users1;
+
+    }
+
+    public Transactions() {
+
     }
 }

@@ -1,4 +1,5 @@
 package com.example.librarymanagment.controller;
+import com.example.librarymanagment.entity.Assets;
 import com.example.librarymanagment.entity.Transactions;
 import com.example.librarymanagment.exceptions.ResponseHandler;
 import com.example.librarymanagment.repository.TransactionsRepository;
@@ -25,7 +26,19 @@ public class TransactionsController {
     @Autowired
     private TransactionsRepository transactionsRepository;
 
+//    @Autowired
+//    public TransactionsController(TransactionsRepository transactionsRepository) {
+//        this.transactionsRepository = transactionsRepository;
+//    }
 
+//    @PostMapping("/country")
+//    public ResponseEntity<?> saveTransaction(@RequestBody Transactions transactions) {
+//        Transactions savedTransaction = this.transactionsRepository.save(transactions);
+//
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+//                .buildAndExpand(savedCountry.getId()).toUri();
+//        return ResponseEntity.created(location).build();
+//    }
     @PostMapping("/saveTransaction")
     public Transactions createTransactions(@RequestBody Transactions transaction) {
 

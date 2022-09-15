@@ -5,7 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,27 +16,33 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Table(name = "role_user")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Entity
 public class Role_User {
 
     @Id
     private Long id;
 
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JsonBackReference
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
     @JoinColumn(name = "user_id",nullable = true)
+    @JsonIgnore
     private Users users;
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JsonBackReference
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
     @JoinColumn(name = "role_id",nullable = true)
+    @JsonIgnore
     private Roles roles;
 
     public Role_User(Users users, Roles roles) {
         this.users = users;
         this.roles = roles;
+    }
+
+    public Role_User() {
+
     }
 }
