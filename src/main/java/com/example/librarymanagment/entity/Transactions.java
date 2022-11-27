@@ -39,45 +39,47 @@ public class Transactions implements Serializable {
     @UpdateTimestamp
     private LocalDateTime deleted_at;
 
-    @Column(name = "isReturned")
-    private String isReturned;
+    @Column(name = "isReturned",columnDefinition = "TINYINT(4)",nullable = false)
+    private Integer isReturned;
 
-    @Column(name = "returnDate")
+    @Column(name = "returnDate",nullable = false)
     private String returnDate;
 
     @Column(name = "returnedOn")
     private String returnedOn;
 
-    @Column(name = "issueDate")
+    @Column(name = "issueDate",nullable = false)
     private String issueDate;
 
 
 
-    @ManyToOne
-    @JoinColumn(name = "assets_id")
-    private Assets assets;
+//    @ManyToOne
+    @Column(name = "asset_id",nullable = false)
+    private Integer asset_id;
 
-    public Assets getAssets() {
-        return this.assets;
-    }
+//    public Assets getAssets() {
+//        return this.assets;
+//    }
 
-    public void setAssets(Assets assets) {
-        this.assets = assets;
-    }
-
-
-    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
-    @JoinColumn(name = "team_id",referencedColumnName = "id")
-    @JsonIgnore
-    private Teams teams;
+//    public void setAssets(Assets assets) {
+//        this.assets = assets;
+//    }
 
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
-    @JoinColumn(name = "member_id",referencedColumnName = "id")
-    @JsonIgnore
-    private Users users;
+//    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+    @Column(name = "team_id",nullable = true)
+//    @JsonIgnore
+    private Integer team_id;
 
-    public Transactions(Assets assets,Long id, LocalDateTime created_at, LocalDateTime updated_at, String isReturned, String returnDate, String returnedOn, String issueDate, Teams teams, Users users) {
+    @Column(name = "user_id")
+    private Integer user_id;
+
+//    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+    @Column(name = "member_id")
+//    @JsonIgnore
+    private Integer member_id;
+
+    public Transactions(Long id, LocalDateTime created_at, LocalDateTime updated_at, Integer isReturned, String returnDate, String returnedOn, String issueDate,Integer asset_id, Integer team_id, Integer user_id, Integer member_id) {
         this.id = id;
         this.created_at = created_at;
         this.updated_at = updated_at;
@@ -85,8 +87,10 @@ public class Transactions implements Serializable {
         this.returnDate = returnDate;
         this.returnedOn = returnedOn;
         this.issueDate = issueDate;
-        this.teams = teams;
-        this.users = users;
+        this.asset_id = asset_id;
+        this.team_id = team_id;
+        this.member_id=member_id;
+        this.user_id=user_id;
 
     }
 

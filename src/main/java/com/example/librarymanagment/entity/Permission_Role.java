@@ -24,22 +24,23 @@ import org.hibernate.annotations.UpdateTimestamp;
         property = "id")
 public class Permission_Role {
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
-    @JoinColumn(name = "permission_id",nullable = true)
-    @JsonIgnore
-    private Permissions permissions;
+//    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+    @Column(name = "permission_id",nullable = true)
+//    @JsonIgnore
+    private int permission_id;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
-    @JoinColumn(name = "role_id",nullable = true)
-    @JsonIgnore
-    private Roles roles;
+//    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+    @Column(name = "role_id",nullable = true)
+//    @JsonIgnore
+    private int role_id;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Permission_Role(Permissions permissions, Roles roles) {
-        this.permissions = permissions;
-        this.roles=roles;
+    public Permission_Role(Long id,int permission_id, int role_id) {
+        this.role_id = role_id;
+        this.permission_id=permission_id;
+        this.id=id;
     }
 
 

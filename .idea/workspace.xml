@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55f1051b-bb81-4c47-a1a5-ffd86d3de336" name="Changes" comment="first">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/LibraryManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/LibraryManagementApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/controller/TransactionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/controller/TransactionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/controller/AssetsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/controller/AssetsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/controller/Role_UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/controller/Role_UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Assets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Assets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Permission_Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Permission_Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Permissions.java" afterDir="false" />
@@ -17,6 +20,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Teams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Teams.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Transactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Transactions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/repository/Role_UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/repository/Role_UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/service/Role_UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/service/Role_UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/service/services/Role_UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/librarymanagment/service/services/Role_UserServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +43,17 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagment/controller/AssetsController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Assets.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Permissions.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Role_User.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Roles.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Teams.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Transactions.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/librarymanagment/entity/Users.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -69,12 +87,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Desktop/librarymanagment&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Administrator/Downloads/Laravel-Stock-Management&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;1ede35b04cb9c385306c402d9bbc1fcd&quot;
   }
 }</component>
@@ -138,7 +156,22 @@
       <workItem from="1663141927872" duration="4879000" />
       <workItem from="1663165855294" duration="2496000" />
       <workItem from="1663225917803" duration="651000" />
-      <workItem from="1663241131796" duration="1367000" />
+      <workItem from="1663241131796" duration="2635000" />
+      <workItem from="1663327426309" duration="603000" />
+      <workItem from="1665487886090" duration="694000" />
+      <workItem from="1665555480029" duration="2661000" />
+      <workItem from="1665665468638" duration="2575000" />
+      <workItem from="1665729009846" duration="960000" />
+      <workItem from="1665760930480" duration="2432000" />
+      <workItem from="1667846750863" duration="601000" />
+      <workItem from="1669130176731" duration="434000" />
+      <workItem from="1669132791711" duration="21902000" />
+      <workItem from="1669350664696" duration="1188000" />
+      <workItem from="1669353007253" duration="21703000" />
+      <workItem from="1669448799993" duration="7030000" />
+      <workItem from="1669466891543" duration="300000" />
+      <workItem from="1669467322467" duration="28351000" />
+      <workItem from="1669547560196" duration="3532000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1662674302959</created>
@@ -175,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662983177896</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="first">
+      <created>1663247278098</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1663247278098</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

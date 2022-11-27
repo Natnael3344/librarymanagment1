@@ -67,21 +67,21 @@ public class Assets implements Serializable{
     private int danger_level;
 
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
-    @JoinColumn(name = "team_id")
-    @JsonIgnore
-    private Teams teams;
+//    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+    @Column(name = "team_id")
+//    @JsonIgnore
+    private int team_id;
 
 //    @JsonManagedReference
 //    @OneToMany(mappedBy = "assets", cascade = CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval = true)
 //    private Set<Transactions> transactions;
-      @OneToMany(mappedBy="assets")
-      private List<Transactions> transactions= new ArrayList<>();
-
-      public Assets(List<Transactions> transactions){
-          setTransactions(transactions);
-      }
-    public Assets(Long id, LocalDateTime created_at, LocalDateTime updated_at,LocalDateTime deleted_at, String name, String author, String publication,String edition, String cost, String language, String pages, String description, String rfid_tag, int danger_level, Teams teams) {
+//      @OneToMany(mappedBy="assets")
+//      private List<Transactions> transactions= new ArrayList<>();
+//
+//      public Assets(List<Transactions> transactions){
+//          setTransactions(transactions);
+//      }
+    public Assets(Long id, LocalDateTime created_at, LocalDateTime updated_at,LocalDateTime deleted_at, String name, String author, String publication,String edition, String cost, String language, String pages, String description, String rfid_tag, int danger_level, int team_id) {
         this.id = id;
         this.created_at = created_at;
         this.updated_at = updated_at;
@@ -96,32 +96,32 @@ public class Assets implements Serializable{
         this.description = description;
         this.rfid_tag = rfid_tag;
         this.danger_level = danger_level;
-        this.teams = teams;
+        this.team_id = team_id;
     }
 
     public Assets() {
 
     }
 
-    public List<Transactions> getTransactions() {
-        return transactions;
-    }
-    public void setTransactions(List<Transactions> transactions) {
-        transactions.forEach(transaction -> transaction.setAssets(this));
-        this.transactions = transactions;
-    }
+//    public List<Transactions> getTransactions() {
+//        return transactions;
+//    }
+//    public void setTransactions(List<Transactions> transactions) {
+//        transactions.forEach(transaction -> transaction.setAssets(this));
+//        this.transactions = transactions;
+//    }
 
-    public Transactions addTransactions(Transactions transaction) {
-        getTransactions().add(transaction);
-        transaction.setAssets(this);
+//    public Transactions addTransactions(Transactions transaction) {
+//        getTransactions().add(transaction);
+//        transaction.setAssets(this);
+//
+//        return transaction;
+//    }
 
-        return transaction;
-    }
-
-    public Transactions removeTransactions(Transactions transaction) {
-        getTransactions().remove(transaction);
-        transaction.setAssets(null);
-
-        return transaction;
-    }
+//    public Transactions removeTransactions(Transactions transaction) {
+//        getTransactions().remove(transaction);
+//        transaction.setAssets(null);
+//
+//        return transaction;
+//    }
 }

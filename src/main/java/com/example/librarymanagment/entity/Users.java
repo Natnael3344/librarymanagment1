@@ -1,7 +1,9 @@
 package com.example.librarymanagment.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -22,12 +24,14 @@ import org.hibernate.annotations.UpdateTimestamp;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 @Table(name = "users")
-public class Users {
-
+public class Users implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id")
     private Long id;
+
+
     @Column(name = "created_at",updatable = false)
     @CreationTimestamp
     private LocalDateTime created_at;
@@ -64,19 +68,19 @@ public class Users {
     private String rfid_tag;
 
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
-    @JoinColumn(name="team_id")
-    @JsonIgnore
-    private Teams teams;
+//    @ManyToOne(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+    @Column(name="team_id")
+//    @JsonIgnore
+    private int team_id;
 
 
-    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
-    private Set<Role_User> role_user;
+//    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
+//    private Set<Role_User> role_user;
 
 
-    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
-    private Set<Transactions> transactions;
-    public Users(Long id, LocalDateTime created_at, LocalDateTime updated_at, String fname, String lname, String email, String mobile, LocalDateTime email_verified_at, String password, String remember_token, String rfid_tag, Teams teams) {
+//    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
+//    private Set<Transactions> transactions;
+    public Users(Long id, LocalDateTime created_at, LocalDateTime updated_at, String fname, String lname, String email, String mobile, LocalDateTime email_verified_at, String password, String remember_token, String rfid_tag, int team_id) {
         this.id = id;
         this.created_at = created_at;
         this.updated_at = updated_at;
@@ -88,7 +92,7 @@ public class Users {
         this.password = password;
         this.remember_token = remember_token;
         this.rfid_tag = rfid_tag;
-        this.teams = teams;
+        this.team_id = team_id;
     }
 
     public Users() {

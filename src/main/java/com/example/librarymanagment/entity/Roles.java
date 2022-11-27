@@ -1,7 +1,9 @@
 package com.example.librarymanagment.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -20,9 +22,13 @@ import org.hibernate.annotations.UpdateTimestamp;
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 @Table(name = "roles")
-public class Roles {
+public class Roles implements Serializable {
     @Id
+    @GeneratedValue
+    @Column(name = "id")
     private Long id;
+
+
     @Column(name = "created_at")
     @CreationTimestamp
     private LocalDateTime created_at;
@@ -38,12 +44,12 @@ public class Roles {
     private String title;
 
 
-    @OneToMany(mappedBy = "roles",fetch = FetchType.LAZY)
-    Set<Permission_Role> permission_role;
+//    @OneToMany(mappedBy = "roles",fetch = FetchType.LAZY)
+//    Set<Permission_Role> permission_role;
 
 
-    @OneToMany(mappedBy = "roles",fetch = FetchType.LAZY)
-    private Set<Role_User> role_user;
+//    @OneToMany(mappedBy = "roles",fetch = FetchType.LAZY)
+//    private Set<Role_User> role_user;
 
     public Roles(Long id, LocalDateTime created_at, LocalDateTime updated_at, String title,LocalDateTime deleted_at) {
         this.id = id;

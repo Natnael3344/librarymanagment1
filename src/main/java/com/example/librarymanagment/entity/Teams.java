@@ -39,16 +39,16 @@ public class Teams {
     private String name;
 
 
-    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
-    private Set<Users> users;
+//    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
+//    private Set<Users> users;
 
 
-    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
-    private Set<Assets> assets;
+//    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
+//    private Set<Assets> assets;
 
 
-    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
-    private Set<Transactions> transactions;
+//    @OneToMany(mappedBy = "teams",fetch = FetchType.LAZY)
+//    private Set<Transactions> transactions;
     public Teams(Long id, LocalDateTime created_at, LocalDateTime updated_at, String name,LocalDateTime deleted_at) {
         this.id = id;
         this.created_at = created_at;

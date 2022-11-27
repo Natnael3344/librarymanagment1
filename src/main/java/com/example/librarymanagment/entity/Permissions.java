@@ -38,8 +38,8 @@ public class Permissions {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "permissions",fetch = FetchType.LAZY)
-    private Set<Permission_Role> permission_role;
+//    @OneToMany(mappedBy = "permissions",fetch = FetchType.LAZY)
+//    private Set<Permission_Role> permission_role;
 
 
     public Permissions(Long id, LocalDateTime created_at, LocalDateTime updated_at, String title,LocalDateTime deleted_at) {

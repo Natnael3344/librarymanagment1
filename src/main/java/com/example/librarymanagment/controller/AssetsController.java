@@ -22,9 +22,12 @@ public class AssetsController {
 
     @Autowired
     private  AssetsService assetsService;
-    @Autowired
-    private AssetsRepository assetsRepository;
 
+    private final AssetsRepository assetsRepository;
+    @Autowired
+    public AssetsController(AssetsRepository assetsRepository) {
+        this.assetsRepository = assetsRepository;
+    }
 
     @PostMapping("/save")
     public Assets saveAsset(@RequestBody Assets asset) {

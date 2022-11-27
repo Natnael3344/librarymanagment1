@@ -6,18 +6,24 @@ import com.example.librarymanagment.entity.Teams;
 import com.example.librarymanagment.exceptions.NotFoundException;
 import com.example.librarymanagment.repository.Role_UserRepository;
 import com.example.librarymanagment.service.Role_UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.management.relation.Role;
 import java.util.List;
 import java.util.Optional;
+@Service
+@Primary
+public  class Role_UserServices implements Role_UserService {
+    @Autowired
+    private  Role_UserRepository role_userRepository;
 
-public abstract class Role_UserServices implements Role_UserService {
-    private final Role_UserRepository role_userRepository;
-
-    public Role_UserServices(Role_UserRepository role_userRepository) {
-        this.role_userRepository = role_userRepository;
-    }
+//    public Role_UserServices(Role_UserRepository role_userRepository) {
+//        this.role_userRepository = role_userRepository;
+//    }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
@@ -27,9 +33,9 @@ public abstract class Role_UserServices implements Role_UserService {
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
-    public Optional<Role_User> findRole_UserById(Long id) {
-        return role_userRepository.findById(id);
-//                .orElseThrow(() -> new NotFoundException(String.format("Author not found with ID %d", id)));
+    public Role_User findRole_UserById(Long id) {
+        return role_userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("Author not found with ID %d", id)));
     }
 
     @Override
@@ -38,8 +44,13 @@ public abstract class Role_UserServices implements Role_UserService {
     }
 
     @Override
-    public void updateRole_User(Role_User role_user) {
-        role_userRepository.save(role_user);
+    public Role_User updateRole_User(Role_User role_user) {
+        boolean exist = role_userRepository.existsById(role_user.getId());
+        if(exist){
+            return role_userRepository.save(role_user);
+        }
+        return null;
+
     }
 
 
