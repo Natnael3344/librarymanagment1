@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
@@ -985,4 +985,4 @@ INSERT INTO `transactions` (`id`, `isReturned`, `returnDate`, `returnedOn`, `iss
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables />
   </component>
-</project>
+</project> -->
